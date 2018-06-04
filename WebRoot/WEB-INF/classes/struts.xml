@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.custom.i18n.resorces" value="messageResource"/>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	
+	<package name="Interceptor-default" extends="struts-default,json-default" namespace="/">
+      <interceptors>
+			<interceptor name="auditInterceptor" class="dao.common.AuditInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="auditInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+    </package>
+    
+	<package name="admin" namespace="/admin" extends="Interceptor-default">
+		<action name="loginPage">
+			<result>/WEB-INF/view/admin/login.jsp</result>
+		</action>
+		
+		<action name="managePage"  class="manageAction" method="init">
+			<result name="success">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="loginAction" class="auserAction" method="login">
+			<result name="loginsuccess" type="redirectAction">
+				<param name="namespace">/admin</param>
+				<param name="actionName">managePage</param>
+			</result>
+			<result name="input">/WEB-INF/view/admin/login.jsp</result>
+		</action>
+		
+		<action name="*Action" class="goodsAction" method="{1}">
+			<result name="{1}Success">/WEB-INF/view/BackToManagePage.jsp</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="selectGoodsDetails" class="goodsAction" method="selectGoodsDetails">
+			<result name="success">/WEB-INF/view/admin/goodsdetails.jsp</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="goodsdetailsForUpdate" class="goodsAction" method="selectGoodsDetails">
+			<result name="success">/WEB-INF/view/admin/goodsdetailsForUpdate.jsp</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		
+		<action name="*Notice" class="noticeAction" method="{1}">
+			<result name="{1}Success" type="redirectAction">
+				<param name="namespace">/admin</param>
+				<param name="actionName">managePage</param>
+			</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="deleteBusersAction" class="buserAction" method="delete">
+			<result name="deleteBuserSuccess" type="redirectAction">
+				<param name="namespace">/admin</param>
+				<param name="actionName">managePage</param>
+			</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="deleteOrderAction" class="ordetBaseAction" method="delete">
+			<result name="deleteOrderSuccess" type="redirectAction">
+				<param name="namespace">/admin</param>
+				<param name="actionName">managePage</param>
+			</result>
+			<result name="input">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		
+		<action name="selectGno" class="goodsAction" method="selectGno">
+			<result name="success">/WEB-INF/view/admin/manage.jsp</result>
+		</action>
+		
+		<action name="pageOnChangeForSelect" class="goodsPageActionForm" method="PageOnChange">
+			<result name="success">/WEB-INF/view/admin/GoodsShowWithPageForSelect.jsp </result>
+		</action>
+		<action name="pageOnChangeForUpdate" class="goodsPageActionForm" method="PageOnChange">
+			<result name="success">/WEB-INF/view/admin/GoodsShowWithPageForUpdate.jsp </result>
+		</action>
+	</package>
+	
+	
+	
+	
+	<package name="market" namespace="/market" extends="Interceptor-default">
+		<action name="*Page">
+			<result>/WEB-INF/view/Market/{1}.jsp</result>
+		</action>
+		
+		<action name="logoutAction" class="web.BuserAction" method="logout">
+			<result name="success">/WEB-INF/view/Market/index.jsp</result>
+		</action>
+		
+		<action name="loginAction" class="buserAction" method="login">
+			<result name="loginsuccess" type="redirectAction">
+				<param name="namespace">/market</param>
+				<param name="actionName">homepage</param>
+			</result>
+			<result name="input">/WEB-INF/view/Market/login.jsp</result>
+		</action>
+		
+		<action name="registerAction" class="buserAction" method="register">
+			<result name="success">/WEB-INF/view/Market/login.jsp</result>
+			<result name="input">/WEB-INF/view/Market/register.jsp</result>
+		</action>
+		
+		<action name="homepage" class="homePageAction" method="init">
+			<result name="success">/WEB-INF/view/Market/Marketlead.jsp</result>
+			<result name="input">/WEB-INF/view/Market/login.jsp</result>
+		</action>
+		
+		
+		<action name="usercenter" class="userCenterAction" method="init">
+			<result name="success">/WEB-INF/view/Market/userCenter.jsp</result>
+			<result name="nologin">/WEB-INF/view/BackToBuserLogin.jsp</result>
+	   		<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		<action name="selectGoodsDetails" class="goodsAction" method="selectGoodsDetails">
+			<result name="success">/WEB-INF/view/Market/goodsdetails.jsp</result>
+			<result name="input">/WEB-INF/view/Market/Marketlead.jsp</result>
+		</action>
+		
+		
+		
+		<action name="addInCart" class="cartAction" method="add">
+			<result name="success">/WEB-INF/view/Market/Marketlead.jsp</result>
+			<result name="input">/WEB-INF/view/Market/goodsdetails.jsp</result>
+		</action>
+		
+		<action name="deleteGoddsInCart" class="cartAction" method="delete">
+			<result name="success">/WEB-INF/view/Market/Cart.jsp</result>
+			<result name="input">/WEB-INF/view/Market/Cart.jsp</result>
+		</action>
+		
+		<action name="selectChoisedGoods"  class="cartAction" method="selectChoisedGoods">
+			<result name="success">/WEB-INF/view/Market/orderconfirm.jsp</result>
+			<result name="input">/WEB-INF/view/Market/Cart.jsp</result>
+			<result name="nologin">/WEB-INF/view/BackToBuserLogin.jsp</result>
+	   		<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		<action name="Cart" class="userCenterAction" method="initCartGoods">
+			<result name="success">/WEB-INF/view/Market/Cart.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="orderconfirmAction" class="goodsAction" method="selectGoodsDetails">
+			<result name="success">/WEB-INF/view/Market/orderconfirm.jsp</result>
+			<result name="nologin">/WEB-INF/view/BackToBuserLogin.jsp</result>
+	   		<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		<action name="OrderAction" class="orderDetailAction" method="addorder">
+			<result name="success">/WEB-INF/view/Market/addorderSuccess.jsp</result>
+			<result name="input">/WEB-INF/view/Market/orderconfirm.jsp</result>
+			
+		</action>
+		
+		
+		<action name="addFocusGoodsAction"  class="goodsAction" method="addfocusgood">
+			<result name="success">/WEB-INF/view/Market/Marketlead.jsp</result>
+			<result name="input">/WEB-INF/view/Market/goodsdetails.jsp</result>
+			<result name="nologin">/WEB-INF/view/BackToBuserLogin.jsp</result>
+	   		<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		
+		<action name="manage">
+			<result type="redirectAction">
+					<param name="namespace">/admin</param>
+					<param name="actionName">loginPage</param>
+			</result>
+		</action>
+		
+		
+		<action name="vagueGetGoods" class="goodsPageActionForm" method="SelectByGnameOrType">
+			<result name="success">/WEB-INF/view/Market/selectGoods.jsp </result>
+			<result name="input">/WEB-INF/view/Market/manage.jsp</result>
+		</action>
+		
+		<action name="updateShoppingnum" class="cartAction" method="updateShoppingnum">
+			<result name="success">/WEB-INF/view/Market/Cart.jsp </result>
+		</action>
+		<action name="pageOnChange" class="goodsPageActionForm" method="PageOnChange">
+			<result name="success">/WEB-INF/view/Market/GoodsShowWithPage.jsp </result>
+		</action>
+	</package>
+</struts>    

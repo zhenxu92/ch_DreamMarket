@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean name="auserAction" class="web.AuserAction" scope="prototype"></bean>
+	<bean name="buserAction" class="web.BuserAction" scope="prototype"></bean>
+	<bean name="cartAction" class="web.CartAction" scope="prototype"></bean>
+	<bean name="goodsAction" class="web.GoodsAction" scope="prototype"></bean>
+	<bean name="homePageAction" class="web.HomePageAction" scope="prototype"></bean>
+	<bean name="manageAction" class="web.ManageAction" scope="prototype"></bean>
+	<bean name="noticeAction" class="web.NoticeAction" scope="prototype"></bean>
+	<bean name="ordetBaseAction" class="web.OrderBaseAction" scope="prototype"></bean>
+	<bean name="orderDetailAction" class="web.OrderdetailAction" scope="prototype"></bean>
+	<bean name="userCenterAction" class="web.UserCenterAction" scope="prototype"></bean>
+	<bean name="goodsPageActionForm" class="web.form.GoodsPageActionForm" scope="prototype"></bean>
+</beans>
