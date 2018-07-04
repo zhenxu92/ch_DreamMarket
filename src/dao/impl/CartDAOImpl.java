@@ -60,6 +60,7 @@ private Connection conn;
 	
 	public int insert(Cart cart,Integer bid,String gno,String ip) throws SQLException {
 		int result = -1;
+		// ip user
 		if(0==bid){
 			String sessionID = IPUtile.CreatSessionID(ip);
 			PreparedStatement pstmt = null;
@@ -72,6 +73,16 @@ private Connection conn;
 				cartId = rs.getInt(1);
 				cart.setCid(cartId);
 			}
+			// user 1 2 3
+			// order 1 2 3
+			// service (date)
+			// DAO (
+			// id date user 
+			// 1	02 91
+			// list results
+			// loop through results
+			// map.containsKey(query(1), getOrDefault() + 1)
+			
 			String CartGoodsGnoSql = "SELECT carttable_temporary.gno FROM carttable_temporary WHERE carttable_temporary.sessionid='"+sessionID+"'";
 			System.out.println(CartGoodsGnoSql);
 			pstmt = conn.prepareStatement(CartGoodsGnoSql);
@@ -82,8 +93,10 @@ private Connection conn;
 			while(rs.next()){
 				i++;
 				gnoList[i] = rs.getString(1);
+				System.out.print(gnoList[i]);
 				
 			}
+			
 			for(int j = 0;j<gnoList.length;j++){
 				if(gnoList[j]!=null&&gno.trim().equals(gnoList[j].trim())){
 					String CartGoodsShoppingnumSql = "SELECT shoppingnum FROM carttable_temporary WHERE carttable_temporary.gno='"+gno.trim()+"'";
@@ -98,6 +111,7 @@ private Connection conn;
 					}
 				}
 			}
+			
 			if(result == -1){
 				String sql = "INSERT INTO carttable_temporary (cid, sessionid, bid, gno, shoppingnum) " +
 				"VALUES (?,?,?,?,?)";
@@ -111,6 +125,7 @@ private Connection conn;
 			}
 			
 			return result;
+		// new coming user
 		}else if(null == cart && null == gno){
 			String sessionID = IPUtile.CreatSessionID(ip);
 			PreparedStatement pstmt = null;
@@ -142,6 +157,7 @@ private Connection conn;
 			}
 			
 			return 0;
+		// existing logged in user
 		}else{
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;

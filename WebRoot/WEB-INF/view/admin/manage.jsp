@@ -18,33 +18,33 @@
 <link href="/ch_DreamMarket/css/bootstrap.min34.css" rel="stylesheet">
 <script type="text/javascript">
 		function submitcommit(){
-			alert('确认添加商品吗？');
+			alert('Sure to add this？');
 			var formObj = document.getElementById("goodsAdminForm");
 			formObj.submit();
 		}
 		function confirmdelete(){
-			alert('确认删除选中公告吗？');
+			alert('Sure to delete this？');
 			var formObj = document.getElementById("DeleteNoticeAdminForm2");
 			formObj.submit();
 		}
 		function submitcommit2(){
-			alert('确认添加公告吗？');
+			alert('Sure to add this？');
 			var formObj = document.getElementById("NoticeAdminForm2");
 			formObj.submit();
 		}
 		function deletegoodssubmitcommit(){
-			alert('确认删除选中商品吗？');
+			alert('Sure to delete selected goods？');
 			var formObj = document.getElementById("DeleteGoodsAdminForm2");
 			formObj.submit();
 		}
 		function deletebusersubmitcommit(){
-			alert('确认删除选中用户吗？');
+			alert('Sure to delete selected user？');
 			var formObj = document.getElementById("DeleteBuserAdminForm2");
 			formObj.submit();
 		}
 		
 		function deleteordersubmitcommit(){
-			alert('确认删除选中订单吗？');
+			alert('Sure to delete selected order？');
 			var formObj = document.getElementById("DeleteOrderAdminForm2");
 			formObj.submit();
 		}

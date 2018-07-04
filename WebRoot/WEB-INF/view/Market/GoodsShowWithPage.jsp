@@ -61,43 +61,7 @@
 			<jsp:include page="fenye.jsp"></jsp:include>
 		</div>
 	</div>
-	<!-- <div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-md-6" align="left">
-							<font style="font-size: 14px; line-height: 29px;">快捷入口</font> <br>
-						</div>
-					</div>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-3">
-							<a class="navbar-brand" href="#">
-								<b>1年售后派单响应</b>
-							</a>
-						</div>
-						<div class="col-md-3">
-							<a class="navbar-brand" href="#">
-								<b>7分钟无理由退货</b>
-							</a>
-						</div>
-						<div class="col-md-3">
-							<a class="navbar-brand" href="#">
-								<b>30分钟换货保障</b>
-							</a>
-						</div>
-						<div class="col-md-3">
-							<a class="navbar-brand" href="#">
-								<b>15分钟退货保障</b>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
+	
 	<script type="text/javascript" src="/ch_DreamMarket/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/ch_DreamMarket/js/bootstrap.min.js"></script>
   </body>

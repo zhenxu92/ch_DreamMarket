@@ -57,7 +57,7 @@ public class GoodsPageActionForm extends ActionSupport implements ModelDriven<Go
 		List<Goods> selectGoods = goodsPageService.PagingSelect(page.getStartIndex(), page.getEndIndex());
 		PageResult pageResult = new PageResult(page, selectGoods);
 		session.put("pageResult", pageResult);
-		// 保存总页数和当前页数
+		// save total #pages and current #page
 		session.put("totalPage", page.getTotalPage());
 		session.put("currentPage", page.getCurrentPage());
 		

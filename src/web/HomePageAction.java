@@ -86,7 +86,7 @@ public class HomePageAction extends ActionSupport implements ModelDriven<Goods>,
 		}
 		session.put("pageResult", pageResult);
 
-		// 保存总页数和当前页数
+		// save total #pages and current #page
 		session.put("totalPage", page.getTotalPage());
 		session.put("currentPage", page.getCurrentPage());
 		

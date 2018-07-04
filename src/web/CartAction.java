@@ -82,6 +82,7 @@ public class CartAction extends ActionSupport implements ModelDriven<Cart>,Sessi
 		session.put("sum", sum);
 		return SUCCESS;
 	}
+	
 	public String delete(){
 		String message = null;
 		Buser buser = (Buser)session.get("buser");
@@ -99,6 +100,7 @@ public class CartAction extends ActionSupport implements ModelDriven<Cart>,Sessi
 		}
 		return message;
 	}
+	
 	public String add(){
 		String message = null;
 		CartService cartService = ServiceFactory.getCartService();
@@ -106,7 +108,7 @@ public class CartAction extends ActionSupport implements ModelDriven<Cart>,Sessi
 		Integer bid = cart.getBuser().getBid();
 		String gno = cart.getGoods().getGno();
 		String ip = cart.getIp();
-		message = cartService.addInCart(cart, bid, gno,ip);
+		message = cartService.addInCart(cart, bid, gno, ip);
 		if(message != null){
 			return INPUT;
 		}

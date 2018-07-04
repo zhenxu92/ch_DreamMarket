@@ -62,10 +62,10 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Servl
 	@SuppressWarnings("unchecked")
 	public BaseAction() {
 		try {
-			// 通过反射获取model的真实类
+			// Reflection to get class
 			ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
 			Class<T> clazz = (Class<T>) pt.getActualTypeArguments()[0];
-			// 通过反射创建model的实体
+			// Reflection to get instance
 			model = clazz.newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -76,7 +76,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Servl
 		return model;
 	}
 
-	/*** 2.Service的支持，要用到的service都放在这里面 ****/
+	/*** 2.Services ****/
 	protected AuserService auserService = ServiceFactory.getAuserService();
 	protected BuserService buserService = ServiceFactory.getBuserService();
 	protected GoodsService goodsService = ServiceFactory.getGoodsService();

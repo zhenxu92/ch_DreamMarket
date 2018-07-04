@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import service.CartService;
+import dao.CartDAO;
 import dao.common.DBUtil;
 import dao.entity.Cart;
 import dao.entity.Goods;
@@ -24,7 +25,7 @@ class CartServiceImpl implements CartService {
 			DBUtil.closeConnection(connection);
 		}
 		return selectCartGoods;
-		}
+	}
 
 	public String addInCart(Cart cart,Integer bid,String gno,String ip) {
 		Connection connection = DBUtil.getConnection();

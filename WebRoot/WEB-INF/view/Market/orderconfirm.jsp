@@ -64,8 +64,8 @@
 										</tr>
 									</s:iterator>
 									<tr>
-										<td colspan="2" align="right" style="padding-right:115px"><font size=6 color="red">Your total:<s:property
-													value="#session.sum" />￥
+										<td colspan="2" align="right" style="padding-right:115px"><font size=6 color="red">Your total: $ <s:property
+													value="#session.sum" />
 										</font></td>
 										<td colspan="2" align="right" style="padding-right:115px"><input type="button"
 												class="btn btn-danger" value="Confirm" data-toggle="modal" data-target="#myModal" /></td>

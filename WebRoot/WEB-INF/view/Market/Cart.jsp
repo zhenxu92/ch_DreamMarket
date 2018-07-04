@@ -111,8 +111,8 @@
 													id='shoppingnum<s:property value="#st.index"/>' onMouseOut=loadXMLDoc${st.index}();
 													name="shoppingnumList" value='<s:property value="#selectCartGoods.shoppingnum"/>'
 													min="0" max='<s:property value="#selectCartGoods.goods.gstore"/>' /> <font /></td>
-										<td><br /> <font size=3 color="black"> <s:property
-													value="#selectCartGoods.goods.goprice" />￥ <font /></td>
+										<td><br /> <font size=3 color="black">$ <s:property
+													value="#selectCartGoods.goods.goprice" /> <font /></td>
 										<td><br /> <a href="javascript:deleteGoodsInCart(<s:property value="#selectCartGoods.cid"/>);">Delete</a></td>
 										<td align="left"><br /> <input type="checkbox" name="cidList"
 												value='<s:property value="#selectCartGoods.cid"/>'></td>

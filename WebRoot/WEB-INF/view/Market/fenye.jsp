@@ -6,7 +6,7 @@ function GoingToSelectPage(url) {
 	  if(currentPage==""){
 	      layer.alert('Page# cannot be null', {
 				icon : 0,
-				title : '警告'
+				title : 'Warning'
 			});	
 		   return false;
 	  }
